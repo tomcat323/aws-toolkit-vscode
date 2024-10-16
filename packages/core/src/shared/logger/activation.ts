@@ -25,6 +25,7 @@ export async function activate(
 ): Promise<void> {
     const settings = Settings.instance.getSection('aws')
     const devLogfile = settings.get('dev.logfile', '')
+    getLogger('test').info(devLogfile)
     const logUri =
         typeof devLogfile === 'string' && devLogfile.trim() !== ''
             ? vscode.Uri.file(resolvePath(devLogfile))
